@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+
+import { renderWithRouter, setup } from './setupTests';
+
 import App from './App';
 
-test('renders learn react link', () => {
-	render(<App />);
+describe('Testing <App />', () => {
+	setup(beforeEach)(
+		() => renderWithRouter(<App />)
+	);
 
-	expect(screen.getByText(/Testing/i)).toBeInTheDocument();
+	test('renders the app', () => {
+		expect(
+			screen.getByText(/The App Lives!/i)
+		).toBeInTheDocument();
+	});
 });

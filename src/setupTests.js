@@ -3,3 +3,18 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+
+import { BrowserRouter } from 'react-router-dom';
+import { render } from '@testing-library/react';
+
+export const renderWithRouter = children =>
+	render(
+		<BrowserRouter>{children}</BrowserRouter>
+	);
+
+export const setup = (...builtins) => (...fns) =>
+	builtins.forEach((builtin, ix) =>
+		builtin(() =>
+			fns[0].length ? fns[ix].forEach(f => f()) : fns.forEach(f => f())
+		)
+	);
