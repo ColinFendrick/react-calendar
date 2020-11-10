@@ -1,24 +1,32 @@
-import DateRangePicker from 'react-bootstrap-daterangepicker';
 
-const DatePicker = () => {
-	const startDate = '1/1/2020';
-	const endDate = '1/2/2020';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+	MuiPickersUtilsProvider,
+	KeyboardDatePicker
+} from '@material-ui/pickers';
+
+const DatePicker = ({ date, set, label }) => {
+
+	const handleDateChange = date => {
+		set(date);
+	};
+
 	return (
-		<div id='daterangepicker'>
-			<DateRangePicker
-				initialSettings={{ startDate, endDate }}
-				onApply={(e, { startDate, endDate }) => console.log(startDate, endDate)}
-			>
-				<input
-					type='text'
-					className='form-control col-4'
-					name='date-range'
-					id='date-range'
-					aria-label='date-range'
-				/>
-			</DateRangePicker>
-			<div>Drag and drop to select a date range</div>
-		</div>
+		<MuiPickersUtilsProvider utils={DateFnsUtils}>
+			<KeyboardDatePicker
+				disableToolbar
+				variant='inline'
+				format='MM/dd/yyyy'
+				margin='normal'
+				id={`${label}-date-picker`}
+				label={label}
+				value={date}
+				onChange={handleDateChange}
+				KeyboardButtonProps={{
+					'aria-label': `${label}-change-date`
+				}}
+			/>
+		</MuiPickersUtilsProvider>
 	);
 };
 

@@ -3,7 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-daterangepicker/daterangepicker.css';
 import './index.css';
 import './App.css';
 
