@@ -1,59 +1,71 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+
+const colors = {
+	text: '#657b83',
+	emphasized: '#586e75',
+	background: '#002b36',
+	softWhite: '#073642',
+	accent: '#fdf6e3',
+	white: '#eee8d5',
+	grey: '#93a1a1'
+};
 
 export default createMuiTheme({
 	palette: {
 		background: {
-			default: 'black'
+			default: colors.background
 		},
 		text: {
-			primary: grey[50]
+			primary: colors.white
 		},
 		primary: {
-			light: '#757ce8',
-			main: '#3f50b5',
-			dark: '#002884',
-			contrastText: '#fff'
+			light: colors.softWhite,
+			main: colors.text,
+			dark: colors.background,
+			contrastText: colors.accent
 		},
 		secondary: {
-			light: '#ff7961',
-			main: '#f44336',
-			dark: '#ba000d',
-			contrastText: '#000'
+			light: colors.white,
+			main: colors.text,
+			dark: colors.background,
+			contrastText: colors.white
 		}
 	},
 	overrides: {
 		MuiPaper: {
 			root: {
-				color: grey[50],
-				backgroundColor: 'black'
+				color: colors.grey,
+				backgroundColor: colors.background
 			}
 		},
 		MuiFormLabel: {
 			root: {
-				color: grey[50]
+				color: colors.text
 			}
 		},
 		MuiFormControl: {
 			root: {
-				borderBottom: `1px solid ${grey[50]}`
+				borderBottom: `1px solid ${'#657b83'}`
 			}
 		},
 		MuiInputBase: {
 			input: {
-				color: grey[50]
+				color: colors.text
 			}
 		},
 		MuiIconButton: {
 			root: {
-				color: grey[50]
+				color: colors.text
 			}
 		},
 		MuiPickersCalendarHeader: {
 			iconButton: {
-				backgroundColor: 'black',
-				border: `0.1px solid ${fade(grey[50], 0.6)}`
+				backgroundColor: colors.background,
+				border: `0.1px solid ${fade(colors.text, 0.6)}`
+			},
+			dayLabel: {
+				color: colors.text
 			}
 		}
 	}
