@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
-export const colors = {
+const colors = {
 	text: '#657b83',
 	emphasized: '#586e75',
 	background: '#002b36',
@@ -15,6 +15,7 @@ export const colors = {
 };
 
 export default createMuiTheme({
+	colors,
 	palette: {
 		background: {
 			default: colors.background
@@ -55,6 +56,13 @@ export default createMuiTheme({
 		MuiInputBase: {
 			input: {
 				color: colors.text
+			}
+		},
+		MuiButtonBase: {
+			root: {
+				'&:focus': {
+					outline: 'none'
+				}
 			}
 		},
 		MuiIconButton: {

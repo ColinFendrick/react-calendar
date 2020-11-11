@@ -1,11 +1,11 @@
 import { CanvasJSChart, CanvasJS } from 'canvasjs-react-charts';
+import { useTheme } from '@material-ui/core/styles';
 
 import { transform } from '../../helpers/data';
-import { colors } from '../../theme';
-
-CanvasJS.addColorSet('solarized', [colors.magenta]);
 
 const Chart = ({ data }) => {
+	const { colors } = useTheme();
+	CanvasJS.addColorSet('solarized', [colors.magenta]);
 	const dataPoints = transform(data);
 
 	const options = {
