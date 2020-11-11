@@ -1,15 +1,9 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-
-import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
-export const renderWithRouter = children =>
+export const renderWith = (...Wrappers) => children =>
 	render(
-		<BrowserRouter>{children}</BrowserRouter>
+		Wrappers.reduce((curr, Wrapper) => <Wrapper>{curr}</Wrapper>, children)
 	);
 
 export const setup = (...builtins) => (...fns) =>
