@@ -7,8 +7,8 @@ import useEventsContext from '../../hooks/useEventsContext';
 const Pickers = () => {
 	const { getEvents } = useEventsContext();
 	const [dates, setDates] = useState({
-		from: '2020-10-09',
-		to: '2020-10-10'
+		from: '2020-05-01',
+		to: '2020-05-02'
 	});
 
 	const handleSubmit = async () => {
@@ -21,9 +21,8 @@ const Pickers = () => {
 
 	return (
 		<>
-			<div className='d-flex '>
+			<div className='d-flex'>
 				<DatePicker label='from' date={dates.from} set={from => setDates({ ...dates, from })}/>
-				<span>to</span>
 				<DatePicker label='to' date={dates.to} set={to => setDates({ ...dates, to })}/>
 			</div>
 

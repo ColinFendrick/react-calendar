@@ -4,13 +4,13 @@ import EventsService from '../services/EventService';
 import { EventsContext } from '../context/EventsContext';
 
 const useEventsContext = () => {
-	const [events] = useContext(EventsContext);
+	const [events, setEvents] = useContext(EventsContext);
 
 	const getEvents = async (dates) => {
-		console.log(dates.from, dates.to);
 		try {
 			const res = await EventsService.getAlertsForDates(dates);
-			console.log(res);
+
+			setEvents({ ...events, data: res.data.data, description: res.data.description });
 		} catch (e) {
 			throw new Error(e);
 		}
