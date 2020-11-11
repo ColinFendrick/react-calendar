@@ -8,12 +8,12 @@ const getToken = () => http.get(
 	`/oauth2/token?client_id=${CLIENT_ID}&api_key=${API_KEY}`
 );
 
-const getLocalBearer = () => localStorage.getItem('bearer');
+const getLocal = token => localStorage.getItem(token);
 
 const service =  {
 	healthCheck,
 	getToken,
-	getLocalBearer
+	getLocal
 };
 
 export default service;

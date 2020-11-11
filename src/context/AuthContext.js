@@ -6,6 +6,7 @@ const AuthContext = createContext([{}, () => {}]);
 
 const AuthProvider = ({ children }) => {
 	const [bearer, setBearer] = useState(null);
+	const [bearerTime, setBearerTime] = useState(null);
 
 	useEffect(
 		() => {
@@ -13,12 +14,17 @@ const AuthProvider = ({ children }) => {
 				localStorage.setItem('bearer', bearer);
 				http.defaults.headers.common = { 'Authorization': `Bearer ${bearer}` };
 			}
+			if (bearerTime) {
+				localStorage.setItem('bearerTime', bearerTime);
+			}
 		},
-		[bearer]
+		[bearer, bearerTime]
 	);
 
 	return (
-		<AuthContext.Provider value={[bearer, setBearer]}>
+		<AuthContext.Provider value={[
+			{ bearer, bearerTime }, { setBearer, setBearerTime }
+		]}>
 			{children}
 		</AuthContext.Provider>
 	);
