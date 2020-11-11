@@ -36,7 +36,6 @@ const App = () => {
 				<CircularProgress />
 			) : error ? <Fallback error={error} /> : (
 				<>
-					<h2>Events Display</h2>
 					<div className='container mt-3'>
 						<Switch>
 							<Route path='/' exact component={Home} />

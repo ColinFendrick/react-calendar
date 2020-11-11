@@ -46,7 +46,6 @@ const Pickers = () => {
 					variant='contained'
 					color='primary'
 					onClick={handleSubmit}
-					// className='submit-button'
 					classes={{ root }}
 				>
 					Apply
