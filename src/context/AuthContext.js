@@ -4,7 +4,7 @@ import http from '../http-common';
 
 const AuthContext = createContext([{}, () => {}]);
 
-const AuthProvider = props => {
+const AuthProvider = ({ children }) => {
 	const [bearer, setBearer] = useState(null);
 
 	useEffect(
@@ -18,7 +18,7 @@ const AuthProvider = props => {
 
 	return (
 		<AuthContext.Provider value={[bearer, setBearer]}>
-			{props.children}
+			{children}
 		</AuthContext.Provider>
 	);
 };

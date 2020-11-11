@@ -2,7 +2,7 @@ import { useState, createContext } from 'react';
 
 const EventsContext = createContext([{}, () => {}]);
 
-const EventsProvider = props => {
+const EventsProvider = ({ children }) => {
 	const [events, setEvents] = useState({
 		data: [],
 		description: {}
@@ -10,7 +10,7 @@ const EventsProvider = props => {
 
 	return (
 		<EventsContext.Provider value={[events, setEvents]}>
-			{props.children}
+			{children}
 		</EventsContext.Provider>
 	);
 };

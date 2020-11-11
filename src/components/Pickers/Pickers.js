@@ -3,9 +3,11 @@ import Button from '@material-ui/core/Button';
 
 import { DatePicker } from '..';
 import useEventsContext from '../../hooks/useEventsContext';
+import useErrorContext from '../../hooks/useErrorContext';
 
 const Pickers = () => {
 	const { getEvents } = useEventsContext();
+	const { setError } = useErrorContext();
 	const [dates, setDates] = useState({
 		from: '2020-05-01',
 		to: '2020-05-02'
@@ -15,7 +17,7 @@ const Pickers = () => {
 		try {
 			await getEvents(dates);
 		} catch (e) {
-			throw new Error(e);
+			setError(`${e.message}`);
 		}
 	};
 

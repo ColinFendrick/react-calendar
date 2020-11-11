@@ -12,9 +12,9 @@ describe('Testing <App />', () => {
 		() => renderWith(BrowserRouter, ContextContainer)(<App />)
 	);
 
-	test('renders the app', () => {
+	test('Shows the loading screen and nothing else', () => {
 		expect(
-			screen.getByText(/Events Display/i)
-		).toBeInTheDocument();
+			screen.queryByText(/Events Display/i)
+		).toBeNull();
 	});
 });

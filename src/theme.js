@@ -9,7 +9,9 @@ export const colors = {
 	accent: '#fdf6e3',
 	white: '#eee8d5',
 	grey: '#93a1a1',
-	magenta: '#d33682'
+	magenta: '#d33682',
+	red: '#dc322f',
+	darkRed: '#180605'
 };
 
 export default createMuiTheme({
@@ -67,6 +69,15 @@ export default createMuiTheme({
 			},
 			dayLabel: {
 				color: colors.text
+			}
+		},
+		MuiAlert: {
+			standardError: {
+				backgroundColor: colors.darkRed,
+				color: colors.red
+			},
+			icon: {
+				color: colors.red
 			}
 		}
 	}
