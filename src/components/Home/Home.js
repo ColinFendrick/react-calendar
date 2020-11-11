@@ -7,6 +7,7 @@ const Home = () => {
 	return (
 		<>
 			<Pickers />
+			<br />
 			{events?.data?.length ? <Chart data={events.data} /> : ''}
 		</>
 	);

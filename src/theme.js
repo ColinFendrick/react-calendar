@@ -1,14 +1,15 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
-const colors = {
+export const colors = {
 	text: '#657b83',
 	emphasized: '#586e75',
 	background: '#002b36',
 	softWhite: '#073642',
 	accent: '#fdf6e3',
 	white: '#eee8d5',
-	grey: '#93a1a1'
+	grey: '#93a1a1',
+	magenta: '#d33682'
 };
 
 export default createMuiTheme({
