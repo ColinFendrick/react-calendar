@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
 	useEffect(
 		() => {
 			if (bearer) {
+				localStorage.setItem('bearer', bearer);
 				http.defaults.headers.common = { 'Authorization': `Bearer ${bearer}` };
 			}
 		},

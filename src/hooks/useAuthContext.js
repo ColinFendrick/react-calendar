@@ -7,9 +7,9 @@ const useAuthContext = () => {
 	const [bearer, setBearer] = useContext(AuthContext);
 
 	const getAndSetBearer = async () => {
-		const res = await AuthService.getLocalBearer();
-		if (res?.data?.access_token) {
-			setBearer(res.data.access_token);
+		const localBearer = await AuthService.getLocalBearer();
+		if (localBearer) {
+			setBearer(localBearer);
 		} else {
 			try {
 				const remoteBearer = await AuthService.getToken();
