@@ -1,19 +1,13 @@
 import { screen } from '@testing-library/react';
-import { ThemeProvider } from '@material-ui/core/styles';
 
-import theme from '../../theme';
-import { renderWith, setup } from '../../setupTests';
-import ContextContainer from '../../containers/ContextContainer';
+import { renderWith, withTheme, withContext, setup } from '../../setupTests';
 
 import Pickers from './Pickers';
 
 describe('Testing <Pickers />', () => {
 	setup(beforeEach)(
-		() => renderWith(ContextContainer)(
-			<ThemeProvider theme={theme}>
-				<Pickers />
-			</ThemeProvider>
-		)
+		() => renderWith(withTheme, withContext)(<Pickers />)
+
 	);
 
 	test('Pickers renders two datepickers and a button', () => {

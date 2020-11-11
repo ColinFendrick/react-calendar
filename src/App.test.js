@@ -2,11 +2,8 @@ import { screen } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import { setup, renderWith } from './setupTests';
+import { setup, renderWith, withContext, withRouter } from './setupTests';
 import { CLIENT_ID, API_KEY  } from './constants';
-
-import ContextContainer from './containers/ContextContainer';
-import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 
@@ -20,7 +17,7 @@ const server = setupServer(
 
 describe('Testing <App />', () => {
 	setup(beforeEach, beforeAll, afterEach, afterAll)(
-		[() => renderWith(ContextContainer, BrowserRouter)(<App />)],
+		[() => renderWith(withContext, withRouter)(<App />)],
 		[() => server.listen(), jest.spyOn(console, 'error').mockImplementation(jest.fn())],
 		[() => server.resetHandlers(), () => window.localStorage.removeItem('bearer')],
 		[() => server.close()]

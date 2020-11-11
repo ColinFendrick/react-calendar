@@ -1,15 +1,13 @@
 import { screen } from '@testing-library/react';
-import { ThemeProvider } from '@material-ui/core/styles';
 
-import theme from '../../theme';
-import { renderWith, setup } from '../../setupTests';
-import ContextContainer from '../../containers/ContextContainer';
+import { renderWith, withTheme, withContext, setup } from '../../setupTests';
 
 import Home from './Home';
 
 describe('Testing <Home />', () => {
 	setup(beforeEach)(
-		() => renderWith(ContextContainer)(<ThemeProvider theme={theme}><Home /></ThemeProvider>)
+		// () => renderWith(ContextContainer)(<ThemeProvider theme={theme}><Home /></ThemeProvider>)
+		() => renderWith(withTheme, withContext)(<Home />)
 	);
 
 	test('Renders the Pickers component given no data', () => {
