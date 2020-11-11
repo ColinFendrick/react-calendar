@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import { renderWith, setup } from './setupTests';
+import { setup, renderWith } from './setupTests';
 import { CLIENT_ID, API_KEY  } from './constants';
 
 import ContextContainer from './containers/ContextContainer';
@@ -20,8 +20,8 @@ const server = setupServer(
 
 describe('Testing <App />', () => {
 	setup(beforeEach, beforeAll, afterEach, afterAll)(
-		[() => renderWith(BrowserRouter, ContextContainer)(<App />)],
-		[() => server.listen()],
+		[() => renderWith(ContextContainer, BrowserRouter)(<App />)],
+		[() => server.listen(), jest.spyOn(console, 'error').mockImplementation(jest.fn())],
 		[() => server.resetHandlers(), () => window.localStorage.removeItem('bearer')],
 		[() => server.close()]
 	);
@@ -33,8 +33,8 @@ describe('Testing <App />', () => {
 	});
 
 	test('Logging in brings you to the main page', async () => {
-		const header = await screen.findByRole('button', { name: 'Apply' });
-		expect(header).toHaveTextContent(/Apply/i);
+		const button = await screen.findByRole('button', { name: 'Apply' });
+		expect(button).toHaveTextContent(/Apply/i);
 		expect(window.localStorage.getItem('bearer')).toEqual(fakeUserResponse.access_token);
 	});
 });
