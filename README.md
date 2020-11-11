@@ -2,7 +2,7 @@
 
 ## Run Remote
 
-Just head over to [the remote link](https://outfit-voting.herokuapp.com/).
+Just head over to [the remote link](https://cfendrick-react-calendar.herokuapp.com/).
 
 ## Run local
 
