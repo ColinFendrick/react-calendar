@@ -6,12 +6,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import './App.css';
 
+import ContextContainer from './containers/ContextContainer';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
 	<BrowserRouter>
-		<App />
+		<ContextContainer>
+			<App />
+		</ContextContainer>
 	</BrowserRouter>,
 	document.getElementById('root')
 );

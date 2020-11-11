@@ -1,5 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 export default createMuiTheme({
 	palette: {
@@ -47,6 +48,12 @@ export default createMuiTheme({
 		MuiIconButton: {
 			root: {
 				color: grey[50]
+			}
+		},
+		MuiPickersCalendarHeader: {
+			iconButton: {
+				backgroundColor: 'black',
+				border: `0.1px solid ${fade(grey[50], 0.6)}`
 			}
 		}
 	}

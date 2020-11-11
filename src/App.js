@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
 	Switch,
 	Route
@@ -5,13 +6,31 @@ import {
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 
+import useAuthContext from './hooks/useAuthContext';
 import { Pickers } from './components';
 import theme from './theme';
 
 const App = () => {
+	const { getAndSetBearer } = useAuthContext();
+
+	useEffect(() => (
+		getAndSetBearer()
+		// (async () => {
+		// 	try {
+		// 		await Auth.healthCheck();
+		// 		const token = await Auth.getToken();
+		// 		console.log(token);
+		// 	} catch (e) {
+		// 		console.log(e);
+		// 	}
+		// })()
+	),
+	[] // eslint-disable-line
+	);
+
 	return (
 		<ThemeProvider theme={theme}>
-			< CssBaseline />
+			<CssBaseline />
 			<h2>The App Lives!</h2>
 			<div className='container mt-3'>
 				<Switch>
