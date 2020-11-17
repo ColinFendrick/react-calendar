@@ -6,7 +6,6 @@ import Home from './Home';
 
 describe('Testing <Home />', () => {
 	setup(beforeEach)(
-		// () => renderWith(ContextContainer)(<ThemeProvider theme={theme}><Home /></ThemeProvider>)
 		() => renderWith(withTheme, withContext)(<Home />)
 	);
 
